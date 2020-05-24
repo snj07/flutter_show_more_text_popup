@@ -33,4 +33,4 @@ popup.show(
 ```
 
 ## Screenshots
-<img src="https://github.com/snj07/flutter_show_more_text_popup/blob/master/screenshots/show_more_text_popup_demo.gif" width="250" />
+<img src="https://raw.githubusercontent.com/snj07/flutter_show_more_text_popup/master/screenshots/show_more_text_popup_demo.gif" width="250" />
