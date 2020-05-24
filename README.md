@@ -1,4 +1,4 @@
-# flutter_show_more_popup
+# flutter_show_more_text_popup
 
 Flutter widget to show text in popup or overlay container
 
