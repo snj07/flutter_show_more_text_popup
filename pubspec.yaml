@@ -1,6 +1,6 @@
 name: show_more_text_popup
-description: Flutter plugin to show extra text as popup
-version: 0.0.2
+description: A Flutter plugin to show the extra text as a popup with parameters to configure the size and other behavior
+version: 0.1.0
 author: Sanjay Sharma
 homepage: https://github.com/snj07/flutter_show_more_text_popup
 

@@ -22,11 +22,14 @@ import 'package:show_more_text_popup/show_more_text_popup.dart';
 
 ```dart
 ShowMoreTextPopup popup = ShowMoreTextPopup(context,
-    text: text,
-    textStyle: TextStyle(color: Colors.black),
-    height: 200,
-    width: 100,
-    backgroundColor: Color(0xFF16CCCC));
+        text: text,
+        textStyle: TextStyle(color: Colors.black),
+        height: 200,
+        width: 100,
+        backgroundColor: Color(0xFF16CCCC),
+        padding: EdgeInsets.all(4.0),
+        borderRadius: BorderRadius.circular(10.0)
+);
 popup.show(
   widgetKey: key,
 );

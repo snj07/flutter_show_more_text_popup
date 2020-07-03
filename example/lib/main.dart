@@ -96,7 +96,10 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
         textStyle: TextStyle(color: Colors.black),
         height: 200,
         width: 100,
-        backgroundColor: Color(0xFF16CCCC));
+        backgroundColor: Color(0xFF16CCCC),
+        padding: EdgeInsets.all(4.0),
+        borderRadius: BorderRadius.circular(10.0)
+    );
     popup.show(
       widgetKey: key,
     );
