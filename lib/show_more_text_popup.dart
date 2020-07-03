@@ -24,13 +24,18 @@ class ShowMoreTextPopup {
 
   bool _isVisible = false;
 
+  BorderRadius _borderRadius;
+  EdgeInsetsGeometry _padding;
+
   ShowMoreTextPopup(this.context,
       {double height,
       double width,
       VoidCallback onDismiss,
       Color backgroundColor,
       String text,
-      TextStyle textStyle}) {
+      TextStyle textStyle,
+      BorderRadius borderRadius,
+      EdgeInsetsGeometry padding}) {
     this.dismissCallback = onDismiss;
     this._popupHeight = height;
     this._popupWidth = width;
@@ -38,6 +43,8 @@ class ShowMoreTextPopup {
     this._textStyle = textStyle ??
         TextStyle(fontWeight: FontWeight.normal, color: Color(0xFF000000));
     this._backgroundColor = backgroundColor ?? Color(0xFFFFA500);
+    this._borderRadius = borderRadius ?? BorderRadius.circular(10.0);
+    this._padding = padding ?? EdgeInsets.all(4.0);
   }
 
   void show({Rect rect, GlobalKey widgetKey}) {
@@ -124,12 +131,12 @@ class ShowMoreTextPopup {
                 left: offset.dx,
                 top: offset.dy,
                 child: Container(
-                    padding: EdgeInsets.all(4.0),
+                    padding: _padding,
                     width: _popupWidth,
                     height: _popupHeight,
                     decoration: BoxDecoration(
                         color: _backgroundColor,
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: _borderRadius,
                         boxShadow: [
                           BoxShadow(
                             color: Color(0xFF808080),
