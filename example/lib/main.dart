@@ -98,8 +98,9 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
         width: 100,
         backgroundColor: Color(0xFF16CCCC),
         padding: EdgeInsets.all(4.0),
-        borderRadius: BorderRadius.circular(10.0)
-    );
+        borderRadius: BorderRadius.circular(10.0));
+
+    /// show the popup for specific widget
     popup.show(
       widgetKey: key,
     );

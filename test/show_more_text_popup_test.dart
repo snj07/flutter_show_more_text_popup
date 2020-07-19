@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:show_more_text_popup/show_more_text_popup.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('show_more_text_popup');
@@ -16,6 +15,4 @@ void main() {
   tearDown(() {
     channel.setMockMethodCallHandler(null);
   });
-
-
 }

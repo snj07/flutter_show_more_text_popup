@@ -1,4 +1,4 @@
-package com.snj07.show_more_text_popup_example
+package com.snj07.example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,3 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.snj07.show_more_text_popup">
-</manifest>
+<manifest package="com.snj07.show_more_text_popup"></manifest>

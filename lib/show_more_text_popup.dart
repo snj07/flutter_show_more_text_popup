@@ -47,6 +47,7 @@ class ShowMoreTextPopup {
     this._padding = padding ?? EdgeInsets.all(4.0);
   }
 
+  /// Shows a popup near a widget with key [widgetKey] or [rect].
   void show({Rect rect, GlobalKey widgetKey}) {
     if (rect == null && widgetKey == null) {
       print("both 'rect' and 'key' can't be null");
@@ -72,6 +73,7 @@ class ShowMoreTextPopup {
     _offset = _calculateOffset(context);
   }
 
+  /// Returns globalRect of widget with key [key]
   Rect _getWidgetGlobalRect(GlobalKey key) {
     RenderBox renderBox = key.currentContext.findRenderObject();
     var offset = renderBox.localToGlobal(Offset.zero);
@@ -79,6 +81,7 @@ class ShowMoreTextPopup {
         offset.dx, offset.dy, renderBox.size.width, renderBox.size.height);
   }
 
+  /// Returns calculated widget offset using [context]
   Offset _calculateOffset(BuildContext context) {
     double dx = _showRect.left + _showRect.width / 2.0 - _popupWidth / 2.0;
     if (dx < 10.0) {
@@ -103,6 +106,7 @@ class ShowMoreTextPopup {
     return Offset(dx, dy);
   }
 
+  /// Builds Layout of popup for specific [offset]
   LayoutBuilder buildPopupLayout(Offset offset) {
     return LayoutBuilder(builder: (context, constraints) {
       return GestureDetector(
@@ -157,6 +161,7 @@ class ShowMoreTextPopup {
     });
   }
 
+  /// Dismisses the popup
   void dismiss() {
     if (!_isVisible) {
       return;
@@ -169,12 +174,15 @@ class ShowMoreTextPopup {
   }
 }
 
+/// [TrianglePainter] is custom painter for drawing a triangle for popup
+/// to point specific widget
 class TrianglePainter extends CustomPainter {
   bool isDownArrow;
   Color color;
 
   TrianglePainter({this.isDownArrow = true, this.color});
 
+  /// Draws the triangle of specific [size] on [canvas]
   @override
   void paint(Canvas canvas, Size size) {
     Path path = new Path();
@@ -196,8 +204,9 @@ class TrianglePainter extends CustomPainter {
     canvas.drawPath(path, paint);
   }
 
+  /// Specifies to redraw for [customPainter]
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
+  bool shouldRepaint(CustomPainter customPainter) {
     return true;
   }
 }
