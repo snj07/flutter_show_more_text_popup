@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
 class DescriptionTextWidget extends StatefulWidget {
   final String text;
 
-  DescriptionTextWidget({@required this.text});
+  DescriptionTextWidget({required this.text});
 
   @override
   _DescriptionTextWidgetState createState() =>
@@ -42,8 +42,8 @@ class DescriptionTextWidget extends StatefulWidget {
 }
 
 class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
-  String firstHalf;
-  String secondHalf;
+  late String firstHalf;
+  late String secondHalf;
   GlobalKey key = new GlobalKey();
   bool flag = true;
 

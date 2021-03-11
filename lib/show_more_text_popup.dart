@@ -8,38 +8,38 @@ class ShowMoreTextPopup {
   double _popupWidth = 200.0;
   double _popupHeight = 200.0;
   double arrowHeight = 10.0;
-  OverlayEntry _entry;
-  String _text;
-  TextStyle _textStyle;
-  Offset _offset;
-  Rect _showRect;
+  late OverlayEntry _entry;
+  String _text = '';
+  TextStyle? _textStyle;
+  late Offset _offset;
+  late Rect _showRect;
   bool _isDownArrow = true;
 
-  VoidCallback dismissCallback;
+  VoidCallback? dismissCallback;
 
-  Size _screenSize;
+  late Size _screenSize;
 
   BuildContext context;
-  Color _backgroundColor;
+  late Color _backgroundColor;
 
   bool _isVisible = false;
 
-  BorderRadius _borderRadius;
-  EdgeInsetsGeometry _padding;
+  BorderRadius? _borderRadius;
+  EdgeInsetsGeometry? _padding;
 
   ShowMoreTextPopup(this.context,
-      {double height,
-      double width,
-      VoidCallback onDismiss,
-      Color backgroundColor,
-      String text,
-      TextStyle textStyle,
-      BorderRadius borderRadius,
-      EdgeInsetsGeometry padding}) {
+      {double? height,
+      double? width,
+      VoidCallback? onDismiss,
+      Color? backgroundColor,
+      String? text,
+      TextStyle? textStyle,
+      BorderRadius? borderRadius,
+      EdgeInsetsGeometry? padding}) {
     this.dismissCallback = onDismiss;
-    this._popupHeight = height;
-    this._popupWidth = width;
-    this._text = text;
+    if (height != null) this._popupHeight = height;
+    if (width != null) this._popupWidth = width;
+    if (text != null) this._text = text;
     this._textStyle = textStyle ??
         TextStyle(fontWeight: FontWeight.normal, color: Color(0xFF000000));
     this._backgroundColor = backgroundColor ?? Color(0xFFFFA500);
@@ -48,14 +48,13 @@ class ShowMoreTextPopup {
   }
 
   /// Shows a popup near a widget with key [widgetKey] or [rect].
-  void show({Rect rect, GlobalKey widgetKey}) {
+  void show({Rect? rect, GlobalKey? widgetKey}) {
     if (rect == null && widgetKey == null) {
       print("both 'rect' and 'key' can't be null");
       return;
     }
 
-    this._text = _text ?? this._text;
-    this._showRect = rect ?? _getWidgetGlobalRect(widgetKey);
+    this._showRect = rect ?? _getWidgetGlobalRect(widgetKey!);
     this._screenSize = window.physicalSize / window.devicePixelRatio;
     this.dismissCallback = dismissCallback;
 
@@ -65,7 +64,7 @@ class ShowMoreTextPopup {
       return buildPopupLayout(_offset);
     });
 
-    Overlay.of(context).insert(_entry);
+    Overlay.of(context)!.insert(_entry);
     _isVisible = true;
   }
 
@@ -75,7 +74,7 @@ class ShowMoreTextPopup {
 
   /// Returns globalRect of widget with key [key]
   Rect _getWidgetGlobalRect(GlobalKey key) {
-    RenderBox renderBox = key.currentContext.findRenderObject();
+    RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
     var offset = renderBox.localToGlobal(Offset.zero);
     return Rect.fromLTWH(
         offset.dx, offset.dy, renderBox.size.width, renderBox.size.height);
@@ -169,7 +168,7 @@ class ShowMoreTextPopup {
     _entry.remove();
     _isVisible = false;
     if (dismissCallback != null) {
-      dismissCallback();
+      dismissCallback!();
     }
   }
 }
@@ -180,7 +179,7 @@ class TrianglePainter extends CustomPainter {
   bool isDownArrow;
   Color color;
 
-  TrianglePainter({this.isDownArrow = true, this.color});
+  TrianglePainter({this.isDownArrow = true, required this.color});
 
   /// Draws the triangle of specific [size] on [canvas]
   @override
