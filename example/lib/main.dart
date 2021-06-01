@@ -70,6 +70,7 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
               children: <Widget>[
                 new Text(firstHalf + " "),
                 new InkWell(
+                  key: Key("show_more_ink_well"),
                   child: new Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -98,7 +99,12 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
         width: 100,
         backgroundColor: Color(0xFF16CCCC),
         padding: EdgeInsets.all(4.0),
-        borderRadius: BorderRadius.circular(10.0));
+        borderRadius: BorderRadius.circular(10.0),
+        onDismiss: () {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Dismiss callback!")));
+        }
+    );
 
     /// show the popup for specific widget
     popup.show(

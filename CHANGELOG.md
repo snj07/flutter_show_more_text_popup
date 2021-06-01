@@ -1,3 +1,5 @@
+## 0.3.0
+Add nullability support
 ## 0.2.0
 Enable web support
 ## 0.1.0
